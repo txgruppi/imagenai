@@ -10,4 +10,4 @@ package api
 // SubjectMask=subject_mask,
 // SmoothSkin=smooth_skin,
 // )
-type tool string
+type Tool string

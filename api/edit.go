@@ -13,7 +13,7 @@ import (
 type StartEditParams struct {
 	ProfileKey      int
 	PhotographyType photographyType
-	Tools           []tool
+	Tools           []Tool
 	CallbackURL     url.URL
 }
 

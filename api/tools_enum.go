@@ -12,37 +12,37 @@ import (
 )
 
 const (
-	// ToolCrop is a tool of type Crop.
-	ToolCrop tool = "crop"
-	// ToolHDRMerge is a tool of type HDRMerge.
-	ToolHDRMerge tool = "hdr_merge"
-	// ToolPerspectiveCorrection is a tool of type PerspectiveCorrection.
-	ToolPerspectiveCorrection tool = "perspective_correction"
-	// ToolPortraitCrop is a tool of type PortraitCrop.
-	ToolPortraitCrop tool = "portrait_crop"
-	// ToolStraighten is a tool of type Straighten.
-	ToolStraighten tool = "straighten"
-	// ToolSubjectMask is a tool of type SubjectMask.
-	ToolSubjectMask tool = "subject_mask"
-	// ToolSmoothSkin is a tool of type SmoothSkin.
-	ToolSmoothSkin tool = "smooth_skin"
+	// ToolCrop is a Tool of type Crop.
+	ToolCrop Tool = "crop"
+	// ToolHDRMerge is a Tool of type HDRMerge.
+	ToolHDRMerge Tool = "hdr_merge"
+	// ToolPerspectiveCorrection is a Tool of type PerspectiveCorrection.
+	ToolPerspectiveCorrection Tool = "perspective_correction"
+	// ToolPortraitCrop is a Tool of type PortraitCrop.
+	ToolPortraitCrop Tool = "portrait_crop"
+	// ToolStraighten is a Tool of type Straighten.
+	ToolStraighten Tool = "straighten"
+	// ToolSubjectMask is a Tool of type SubjectMask.
+	ToolSubjectMask Tool = "subject_mask"
+	// ToolSmoothSkin is a Tool of type SmoothSkin.
+	ToolSmoothSkin Tool = "smooth_skin"
 )
 
-var ErrInvalidtool = errors.New("not a valid tool")
+var ErrInvalidTool = errors.New("not a valid Tool")
 
 // String implements the Stringer interface.
-func (x tool) String() string {
+func (x Tool) String() string {
 	return string(x)
 }
 
 // IsValid provides a quick way to determine if the typed value is
 // part of the allowed enumerated values
-func (x tool) IsValid() bool {
-	_, err := Parsetool(string(x))
+func (x Tool) IsValid() bool {
+	_, err := ParseTool(string(x))
 	return err == nil
 }
 
-var _toolValue = map[string]tool{
+var _ToolValue = map[string]Tool{
 	"crop":                   ToolCrop,
 	"hdr_merge":              ToolHDRMerge,
 	"perspective_correction": ToolPerspectiveCorrection,
@@ -52,22 +52,22 @@ var _toolValue = map[string]tool{
 	"smooth_skin":            ToolSmoothSkin,
 }
 
-// Parsetool attempts to convert a string to a tool.
-func Parsetool(name string) (tool, error) {
-	if x, ok := _toolValue[name]; ok {
+// ParseTool attempts to convert a string to a Tool.
+func ParseTool(name string) (Tool, error) {
+	if x, ok := _ToolValue[name]; ok {
 		return x, nil
 	}
-	return tool(""), fmt.Errorf("%s is %w", name, ErrInvalidtool)
+	return Tool(""), fmt.Errorf("%s is %w", name, ErrInvalidTool)
 }
 
 // MarshalText implements the text marshaller method.
-func (x tool) MarshalText() ([]byte, error) {
+func (x Tool) MarshalText() ([]byte, error) {
 	return []byte(string(x)), nil
 }
 
 // UnmarshalText implements the text unmarshaller method.
-func (x *tool) UnmarshalText(text []byte) error {
-	tmp, err := Parsetool(string(text))
+func (x *Tool) UnmarshalText(text []byte) error {
+	tmp, err := ParseTool(string(text))
 	if err != nil {
 		return err
 	}
